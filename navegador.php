@@ -1,6 +1,8 @@
 	<?php 
  include "estilos.php";
 ?>
+<div class="col-md-11"></div>
+<div class="col-md-1">
 <nav class="navbar navbar-dark
 			">
 <ul class="nav nav-pills">
@@ -10,3 +12,4 @@
   </li>
 </ul>
 	</nav>
+</div>
