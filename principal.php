@@ -34,7 +34,7 @@ include "conexion.php";
 	<div class="row">
 		<div class="col-md-2">
 			<br><br><br>
-			<button class="btn btn-success btn-block" id="insert" onclick="tipoConsulta(id)">Create Document</button>
+			<button class="btn btn-success btn-block" id="create" onclick="tipoConsulta(id)">Create Document</button>
 			
 			<button class="btn btn-success btn-xs" id="create-document-example" onclick="verEjemplo(id)"> Ver ejemplo </button>
 			<button class="btn btn-success btn-xs"  onclick="agregarCampo(id)"> Agregar campo </button>
@@ -101,7 +101,20 @@ include "conexion.php";
 
 <script>
 	function tipoConsulta(id){
-		document.getElementById("text-area-entrada").innerHTML += '{  "clave" : "valor" ';
+		if (id=="create"){
+			document.getElementById("text-area-entrada").innerHTML = '{  "clave" : "valor" ';
+		}
+		else if (id=="get"){
+			document.getElementById("text-area-entrada").innerHTML = '{  "id" : "valor" ';
+		}
+		else if (id=="update"){
+			document.getElementById("text-area-entrada").innerHTML = '{  "id" : "valor" , "_rev" : "valor"';
+		}
+		else if (id=="delete"){
+			document.getElementById("text-area-entrada").innerHTML = '{  "id" : "valor" , "_rev" : "valor"';
+		}
+			
+		
 	}
 
 	
