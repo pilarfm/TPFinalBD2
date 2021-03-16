@@ -1,6 +1,9 @@
 <?php
 
+
 $consulta=$_POST['text-area-entrada'];
+
+
 //$password=$_POST['password'];
 
 echo $consulta;
