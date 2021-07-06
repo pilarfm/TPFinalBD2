@@ -58,9 +58,10 @@ include "conexion.php";
 		<div class="col-md-5">
 			<h4 class="text-center">Escriba aqui su consulta</h4>
 			
-			<form action= "http://127.0.0.1:3010/postDocuments/04" method="post">
+			<form action= "consulta.php" method="post">
 				<div id="ejemplo" style="background-color: aqua; border-radius: 20px;"> </div>
-				<textarea name="text-area-entrada" id="text-area-entrada" rows="18"  style="min-width: 100%"></textarea>
+				<input type="text" name="clave" id="clave"  style="min-width: 100%"></input>
+				<input type="text" name="valor" id="valor" style="min-width: 100%"></input>
 				<button type="submit" class="btn btn-success" >Consultar</button>
 				<button class="btn btn-danger" onclick="borrarConsulta()" >Borrar consulta</button>
 			</form>
