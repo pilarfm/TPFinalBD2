@@ -1,5 +1,5 @@
 <?php 
- include "protec.php";
+include "protec.php";
 include "conexion.php";
 ?>
 <!doctype html>
@@ -58,10 +58,12 @@ include "conexion.php";
 		<div class="col-md-5">
 			<h4 class="text-center">Escriba aqui su consulta</h4>
 			
-			<form action= "consulta.php" method="post">
+
+
+			
+			<form action= "consulta2.php" method="post">
 				<div id="ejemplo" style="background-color: aqua; border-radius: 20px;"> </div>
-				<input type="text" name="clave" id="clave"  style="min-width: 100%"></input>
-				<input type="text" name="valor" id="valor" style="min-width: 100%"></input>
+				<input type="text" name="query" id="clave"  style="min-width: 100%"></input>
 				<button type="submit" class="btn btn-success" >Consultar</button>
 				<button class="btn btn-danger" onclick="borrarConsulta()" >Borrar consulta</button>
 			</form>
