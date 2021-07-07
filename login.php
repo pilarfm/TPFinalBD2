@@ -13,7 +13,7 @@ if(@mysqli_num_rows($res)){
 	$_SESSION["usuario"]=$usuario;
 	$_SESSION["pass"]=$u["pass"];
 
-		header("location:principal.php");
+		header("location:menu.php");
 
 }
 else{

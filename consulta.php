@@ -1,36 +1,41 @@
 <?php
+include "protec.php";
+include "conexion.php";
+$usuario=$_SESSION["usuario"];
+$bd="BD_" . $usuario;
 
-$cantidad = sizeof($_POST);
-echo $cantidad;
-$cantidad = $cantidad/2;
+if (isset($_POST['query'])){
+    $query= $_POST['query'];
+    //genero las consulta
 
-for($i=1;$i<=$cantidad;$i++){
-    $clave = $clave.$i;
-    $valor = $valor.$i;
-    $clave = $_POST['.$clave.'];
-    $valor = $_POST['.$valor.'];
+    $respuesta=null;
+    $start = hrtime(true);
+    $respuesta = mysqli_query($db_user,$query) or die( mysqli_error($db_user) ); // muestra el error
+    $end = hrtime(true);
+    echo "El tiempo de respuesta es ". ($end - $start) / 1000000; 
+    echo " milisegundos";
+    echo "<br>";
+    //registrar esta consulta  
+    $solucion=str_replace ( "'" , "´" , $query);
+
+    $logger = "INSERT INTO logger (id_usuario,bd,query) VALUES ('$usuario','$bd','$solucion')";
+	$guardarUser = mysqli_query( $link,$logger) or die( mysqli_error( $link ) ); // muestra el error
 }
 
-//$clave=$_POST['clave'];
-//$valor = $_POST['valor'];
-$path = "http://127.0.0.1:3010/postDocuments/";
+$split = explode(" ", $query);
+echo $split[0]; // porción1
+echo "<br>";
 
+if($split[0]==="SELECT"){
+    $respuesta
+    ?>
+    <table>
+    <tr>
+      <th>respuesta</th>
+      <th>Apellido</th>
+    </tr>
+    <?php 
+}
 
-
-
-$data = '"id":"28","name":"pilar"';
-list($id,$valor2) = explode(':',$data); 
-list($c,$valor2,$c) = explode('"',$valor2);
-echo $valor2;
-
-$path = $path.$valor2;
-$name = "pilar";
-//$consulta = json_encode($consulta);
-
-echo '
-<form action="'.$path.'" method="post">
-    <textarea name="'.$clave1.'">'.$valor1.'</textarea>
-    <button type="submit">Confirmar </button>
-</form>
-'
 ?>
+<a href="principal.php">volver a consulta </a>

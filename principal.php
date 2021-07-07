@@ -61,7 +61,7 @@ include "conexion.php";
 
 
 			
-			<form action= "consulta2.php" method="post">
+			<form action= "consulta.php" method="post">
 				<div id="ejemplo" style="background-color: aqua; border-radius: 20px;"> </div>
 				<input type="text" name="query" id="clave"  style="min-width: 100%"></input>
 				<button type="submit" class="btn btn-success" >Consultar</button>
