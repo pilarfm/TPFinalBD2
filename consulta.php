@@ -23,19 +23,38 @@ if (isset($_POST['query'])){
 }
 
 $split = explode(" ", $query);
-echo $split[0]; // porción1
-echo "<br>";
-
 if($split[0]==="SELECT"){
-    $respuesta
-    ?>
-    <table>
-    <tr>
-      <th>respuesta</th>
-      <th>Apellido</th>
-    </tr>
-    <?php 
+        
+  if($tupla = $respuesta->fetch_assoc()){
+      $atributos = array_keys($tupla);
+      $valores = array_values($tupla);
+      
+      echo '<table border="1">';
+      echo "<tr>";
+      for ($i=0; $i<count($atributos); $i++){
+          echo '<th>';
+          echo $atributos[$i];
+           echo '</th>';
+      }
+      echo "</tr>";
+      echo "<tr>";
+      for ($i=0; $i<count($atributos); $i++){
+          echo '<th>';echo $valores[$i]; echo '</th>';
+      }
+      echo "</tr>";
+      while ($tupla =$respuesta->fetch_assoc()) {
+          $valores = array_values($tupla);
+          echo "<tr>";
+          for ($i=0; $i<count($valores); $i++)
+          {
+              echo '<th>';echo $valores[$i]; echo '</th>';
+          }
+      }
+      echo "</tr>";
+      echo "</table>";
+  }
+  else{
+      echo "Es un select vacio";
+  }
 }
-
 ?>
-<a href="principal.php">volver a consulta </a>
