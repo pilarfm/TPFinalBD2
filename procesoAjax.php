@@ -17,9 +17,8 @@ if (isset($_POST['Nombre'])){
 	$guardarUser = mysqli_query( $link,$logger)or die( mysqli_error( $link ) ); // muestra el error
 
     //generar consulta
-    $respuesta = mysqli_query($db_user,$query) or die( $error=mysqli_error($db_user) ); // muestra el error
+    $respuesta = mysqli_query($db_user,$query) or die( mysqli_error($db_user) ); // muestra el error
 
-    echo "<h1>$error</h1>";
     $id_logger = mysqli_query( $link,"SELECT id_logger FROM `logger` ORDER BY `id_logger` DESC LIMIT 1") or die( mysqli_error( $link ) );
     $valores=mysqli_fetch_array($id_logger);
     $id=$valores['id_logger'];
