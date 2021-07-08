@@ -38,22 +38,21 @@ include "conexion.php";
 			<button class="btn btn-success btn-block" id="create" onclick="tipoConsulta(id)">Crear Tabla</button>
 			
 			<button class="btn btn-success btn-xs" id="create-document-example" onclick="verEjemplo(id)"> Ver ejemplo </button>
-			<button class="btn btn-success btn-xs"  onclick="agregarCampo(id)"> Agregar campo </button>
 			<br> <br>
 			<button class="btn btn-warning btn-block" id="get" onclick="tipoConsulta(id)">General SELECT</button>
 			
 			<button class="btn btn-warning btn-xs" id="get-document-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
-			<button class="btn btn-warning btn-xs"  onclick="agregarCampo(id)"> Agregar campo </button>
 			<br> <br>
 			<button class="btn btn-primary btn-block" id="update" onclick="tipoConsulta(id)">Update</button>
 			
 			<button class="btn btn-primary btn-xs" id="update-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
-			<button class="btn btn-primary btn-xs"  onclick="agregarCampo(id)"> Agregar campo </button>
 			<br> <br>
 			<button class="btn btn-danger btn-block" id="delete" onclick="tipoConsulta(id)">Delete</button>
 			
 			<button class="btn btn-danger btn-xs" id="delete-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
-			<button class="btn btn-danger btn-xs"  onclick="agregarCampo(id)"> Agregar campo </button>
+			<br>
+			<br>
+			<input type="button" name="enviar" value="Enviar" href="javascript:;" onclick="mostrarRegistar('dado');">
 
 		</div>	
 		<div class="col-md-5">
@@ -79,6 +78,8 @@ include "conexion.php";
 		<div class="col-md-5" id="resultado">
 
 		</div>
+	</div>
+	<div class="col-md-5" id="historial" style="width: 100%">
 	</div>
 
 <?php
@@ -127,7 +128,7 @@ include "conexion.php";
 	function verEjemplo(id){
 		if (id =="create-document-example"){
 			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" + 
-    ' &nbsp CREATE TABLE IF NOT EXISTS jugadores( <br>'+
+    ' &nbsp CREATE TABLE IF NOT EXISTS jugadores ( <br>'+
 	' &nbsp id_jugador int(5) AUTO_INCREMENT, <br>'+
 	' &nbsp nombre varchar(30), <br>'+
 	' &nbsp apellido varchar(30), <br>'+

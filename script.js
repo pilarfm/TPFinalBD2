@@ -12,3 +12,18 @@ $.ajax({
    }
 });
 }
+
+function mostrarRegistar(nombre) {
+    var parametros = {"Nombre":nombre};
+$.ajax({
+   data:parametros,
+   url:'procesarRegistro.php',
+   type: 'post',
+   beforeSend: function () {
+       $("#historial").html("Procesando, espere por favor");
+   },
+   success: function (response) {   
+       $("#historial").html(response);
+   }
+});
+}

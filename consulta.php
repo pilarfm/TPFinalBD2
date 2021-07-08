@@ -12,12 +12,13 @@ if (isset($_POST['query'])){
     $start = hrtime(true);
     $respuesta = mysqli_query($db_user,$query) or die( mysqli_error($db_user) ); // muestra el error
     $end = hrtime(true);
+        echo $respuesta;
     echo "El tiempo de respuesta es ". ($end - $start) / 1000000; 
     echo " milisegundos";
     echo "<br>";
     //registrar esta consulta  
     $solucion=str_replace ( "'" , "´" , $query);
-
+    echo $solucion;
     $logger = "INSERT INTO logger (id_usuario,bd,query) VALUES ('$usuario','$bd','$solucion')";
 	$guardarUser = mysqli_query( $link,$logger) or die( mysqli_error( $link ) ); // muestra el error
 }
