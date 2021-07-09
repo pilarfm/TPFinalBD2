@@ -1,36 +1,61 @@
 <?php
+include "protec.php";
+include "conexion.php";
+$usuario=$_SESSION["usuario"];
+$bd="BD_" . $usuario;
 
-$cantidad = sizeof($_POST);
-echo $cantidad;
-$cantidad = $cantidad/2;
+if (isset($_POST['query'])){
+    $query= $_POST['query'];
+    //genero las consulta
 
-for($i=1;$i<=$cantidad;$i++){
-    $clave = $clave.$i;
-    $valor = $valor.$i;
-    $clave = $_POST['.$clave.'];
-    $valor = $_POST['.$valor.'];
+    $respuesta=null;
+    $start = hrtime(true);
+    $respuesta = mysqli_query($db_user,$query) or die( mysqli_error($db_user) ); // muestra el error
+    $end = hrtime(true);
+        echo $respuesta;
+    echo "El tiempo de respuesta es ". ($end - $start) / 1000000; 
+    echo " milisegundos";
+    echo "<br>";
+    //registrar esta consulta  
+    $solucion=str_replace ( "'" , "´" , $query);
+    echo $solucion;
+    $logger = "INSERT INTO logger (id_usuario,bd,query) VALUES ('$usuario','$bd','$solucion')";
+	$guardarUser = mysqli_query( $link,$logger) or die( mysqli_error( $link ) ); // muestra el error
 }
 
-//$clave=$_POST['clave'];
-//$valor = $_POST['valor'];
-$path = "http://127.0.0.1:3010/postDocuments/";
-
-
-
-
-$data = '"id":"28","name":"pilar"';
-list($id,$valor2) = explode(':',$data); 
-list($c,$valor2,$c) = explode('"',$valor2);
-echo $valor2;
-
-$path = $path.$valor2;
-$name = "pilar";
-//$consulta = json_encode($consulta);
-
-echo '
-<form action="'.$path.'" method="post">
-    <textarea name="'.$clave1.'">'.$valor1.'</textarea>
-    <button type="submit">Confirmar </button>
-</form>
-'
+$split = explode(" ", $query);
+if($split[0]==="SELECT"){
+        
+  if($tupla = $respuesta->fetch_assoc()){
+      $atributos = array_keys($tupla);
+      $valores = array_values($tupla);
+      
+      echo '<table border="1">';
+      echo "<tr>";
+      for ($i=0; $i<count($atributos); $i++){
+          echo '<th>';
+          echo $atributos[$i];
+           echo '</th>';
+      }
+      echo "</tr>";
+      echo "<tr>";
+      for ($i=0; $i<count($atributos); $i++){
+          echo '<th>';echo $valores[$i]; echo '</th>';
+      }
+      echo "</tr>";
+      while ($tupla =$respuesta->fetch_assoc()) {
+          $valores = array_values($tupla);
+          echo "<tr>";
+          for ($i=0; $i<count($valores); $i++)
+          {
+              echo '<th>';echo $valores[$i]; echo '</th>';
+          }
+      }
+      echo "</tr>";
+      echo "</table>";
+  }
+  else{
+      echo "Es un select vacio";
+  }
+}
 ?>
