@@ -39,6 +39,11 @@ include "conexion.php";
 			
 			<button class="btn btn-success btn-xs" id="create-document-example" onclick="verEjemplo(id)"> Ver ejemplo </button>
 			<br> <br>
+			<button class="btn btn-primary btn-block" id="insert" onclick="tipoConsulta(id)">Insert</button>
+			
+			<button class="btn btn-primary btn-xs" id="insert-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
+			
+			<br> <br>
 			<button class="btn btn-warning btn-block" id="get" onclick="tipoConsulta(id)">General SELECT</button>
 			
 			<button class="btn btn-warning btn-xs" id="get-document-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
@@ -52,7 +57,12 @@ include "conexion.php";
 			<button class="btn btn-danger btn-xs" id="delete-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
 			<br>
 			<br>
-			<input type="button" name="enviar" value="Enviar" href="javascript:;" onclick="mostrarRegistar('dado');">
+			<button class="btn btn-danger btn-block" id="limpiar" onclick="tipoConsulta(id)">Limpiar Consulta</button>
+			
+			<br><br>
+			<input type="button" name="enviar" value="Ver Historial" href="javascript:;" onclick="mostrarRegistar('dado');">
+
+
 
 		</div>	
 		<div class="col-md-5">
@@ -109,19 +119,30 @@ include "conexion.php";
 <script>
 	function tipoConsulta(id){
 		if (id=="create"){
-			document.getElementById("text-area-entrada").innerHTML = '{  "clave" : "valor" ';
+			document.getElementById("nombre").innerHTML = 
+			'CREATE TABLE IF NOT EXISTS jugadores ('+
+			'id_jugador int(5) AUTO_INCREMENT,\n'+
+			'nombre varchar(30),\n'+
+			'apellido varchar(30),\n'+
+			'deporte varchar(30),\n'+
+			'numero int,\n'+
+			'PRIMARY KEY (id_jugador))';
+		}
+		else if (id=="insert"){
+			document.getElementById("nombre").innerHTML = 'INSERT INTO jugadores (Nombre, Apellido, Deporte, Numero) VALUES ("Leonel", "Messi", "Futbol", 10)';
 		}
 		else if (id=="get"){
-			document.getElementById("text-area-entrada").innerHTML = '{  "id" : "valor" ';
+			document.getElementById("nombre").innerHTML = 'SELECT * FROM jugadores';
 		}
 		else if (id=="update"){
-			document.getElementById("text-area-entrada").innerHTML = '{  "id" : "valor" , "_rev" : "valor"';
+			document.getElementById("nombre").innerHTML = 'UPDATE jugadores SET nombre = [value], apellido = [value], deporte = [value], numero = [value] WHERE 0';
 		}
 		else if (id=="delete"){
-			document.getElementById("text-area-entrada").innerHTML = '{  "id" : "valor" , "_rev" : "valor"';
+			document.getElementById("nombre").innerHTML = 'DELETE FROM jugadores WHERE 0';
 		}
-			
-		
+		else if (id=="limpiar"){
+			document.getElementById("nombre").innerHTML = '';
+		}
 	}
 
 	
@@ -142,15 +163,21 @@ include "conexion.php";
 		}
 		else if(id =="update-example"){
 			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" + 
-    ' &nbsp { "nombre": "Juan95", <br>'+
-    ' &nbsp   "pass": "5678",<br>'+
-    ' &nbsp    "id" : " ", <br>'+
-	' &nbsp    "_rev": " " } <br>'  +
-	' &nbsp <b> Se actualiza nombre de usuario y contraseña. <br>&nbsp&nbsp En este tipo de consulta es obligatorio ingresar un id y rev. </b><br><br>' 
+    ' &nbsp  UPDATE jugadores <br>'+
+    ' &nbsp  SET nombre=[value],<br>'+
+	' &nbsp	apellido=[value],<br>'+
+	' &nbsp	deporte=[value],<br>'+
+	' &nbsp	numero=[value]<br>'+
+	' &nbsp	WHERE 0'
+		}
+		else if(id =="insert-example"){
+			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" + 
+    ' &nbsp INSERT INTO jugadores (Nombre, Apellido, Deporte, Numero)<br>'+
+	' &nbsp VALUES ("Leonel", "Messi", "Futbol", 10)'
 		}
 		else if (id =="delete-example"){
-			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" +' &nbsp {  "id" : " ", <br>'+
-		'&nbsp&nbsp "_rev": " " } <br> &nbsp&nbsp <b> En este tipo de consulta es obligatorio ingresar un id y rev. </b> <br><br>';
+			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" +
+		'&nbspDELETE FROM jugadores WHERE 0'
 		}
 	}
 
