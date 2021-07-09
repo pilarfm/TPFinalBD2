@@ -37,10 +37,10 @@ if (isset($_POST['Nombre'])){
 
     
     $split = explode(" ", $query);
-    if($split[0]==="SELECT"){
+    if($split[0]==="SELECT" or $split[0]==="select"  ){
             
         if($tupla = $respuesta->fetch_assoc()){
-            echo "entro aca";
+            //echo "entro aca";
             $atributos = array_keys($tupla);
             $valores = array_values($tupla);
         

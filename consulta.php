@@ -24,7 +24,7 @@ if (isset($_POST['query'])){
 }
 
 $split = explode(" ", $query);
-if($split[0]==="SELECT"){
+if($split[0]==="SELECT" or $split[0]==="select"){ //para que entre en minusculas tambien
         
   if($tupla = $respuesta->fetch_assoc()){
       $atributos = array_keys($tupla);
