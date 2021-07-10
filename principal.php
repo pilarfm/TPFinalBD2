@@ -62,7 +62,10 @@ include "conexion.php";
 			<br><br>
 			<input type="button" name="enviar" value="Ver Historial" href="javascript:;" onclick="mostrarRegistar('dado');">
 
-
+			<br><br>
+			<a href="exportarPDF.php" target="_blank">
+    			<button>Exportar PDF</button>
+			</a>
 
 		</div>	
 		<div class="col-md-5">
