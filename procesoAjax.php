@@ -9,7 +9,6 @@ if (isset($_POST['Nombre'])){
     //genero las consulta
 
     $respuesta=null;
-    echo "<h3>Respuesta</h3>";
     $start = hrtime(true);
     //logger
     $solucion=str_replace ( "'" , "´" , $query);

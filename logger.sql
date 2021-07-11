@@ -9,7 +9,7 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+/*SET time_zone = "+00:00";*/
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,8 +33,8 @@ CREATE TABLE `logger` (
   `bd` varchar(30) NOT NULL,
   `query` varchar(500) NOT NULL,
   `resultado` varchar(300) NOT NULL,
-  `fecha` date NOT NULL DEFAULT current_timestamp(),
-  `hora` time NOT NULL DEFAULT current_timestamp()
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
