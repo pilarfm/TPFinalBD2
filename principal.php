@@ -50,7 +50,6 @@ include "conexion.php";
 		<h2 class="text-center">Bienvenido, <?php echo $_SESSION['usuario']; ?> </h2>
 	</div>
 	<br>
-
 	<div class="row">
 		<div class="col-md-6">
 			<div class="row">
