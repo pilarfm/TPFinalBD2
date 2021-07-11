@@ -2,14 +2,21 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Documento sin título</title>
+	<title>Registrarse</title>
 	<link href="estilos.css" rel="stylesheet" type="text/css">
 	<?php 
 	include "estilos.php";
 ?>
 </head>
 
-<body class="fondoNaranja">
+<body class="background">
+	<div class="row header">
+			<div class="col-md-4">
+				<img src="img/logo.png" width="300">
+			</div>
+			<div class="col-md-5"></div>
+			<div class="col-md-2 autores"> Diseñado y desarrollado por: <b><i>Facundo Perez, Matias Dieguez, Juan Cruz Sanchez Saiag y Pilar Fernandez Mutti </i></b></div>
+	</div>
 	<?php
 	if ( isset( $_GET[ "op" ] ) ) {
 		if ( $_GET[ "op" ] == "EXISTE" ) {
@@ -33,34 +40,44 @@
 	}
 	}
 	?>
-<div class="container fondoForm">
-	<br>
-		<h2 class="text-center">Registar Usuario</h2>
-		<div class="col-md-4"></div>
-		<form class="col-md-4" action="registrando.php" method="post">
-			<label class=""></label>
-			<div class="form-group">
-				<label>Usuario:</label>
-				<input name="usuario" type="text" required="required" class="form-control"  >
-			</div>
-		  <div class="form-group">
-			<label for="exampleInputPassword1">Contrase&ntilde;a</label>
-			  <input name="password" type="password" required="required" class="form-control" id="exampleInputPassword1" placeholder="Password" >
-			</div>
-		  <div class="form-group">
-			<label s>Apodo:</label>
-			  <input name="nick" type="text" required="required" class="form-control" >
-			</div>
-		  <div class="form-group">
-			<label>Email:</label>
-			  <input name="email" type="text" required="required" class="form-control"  >
-			</div>
-			<div class="row">
-			<button type="submit" class="btn btn-success espacio" >Guardar</button><a  style="color: white" href="index.php"><button type="button" class="btn btn-primary espacio">Volver</button></a>
-			</div>
-		</form>
-	</div>
 
+
+<div class="row top-padding-100">
+		<div class="col-md-4"></div>
+		<br>
+		<div class="col-md-4 white-back">
+		<h2 class="text-center">Registar Usuario</h2>
+			<form class="col-md-12" action="registrando.php" method="post">
+				<label class=""></label>
+				<div class="form-group">
+					<label><b>Usuario:</b></label>
+					<input name="usuario" type="text" required="required" class="form-control"  >
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="exampleInputPassword1"><b>Contrase&ntilde;a</b></label>
+					<input name="password" type="password" required="required" class="form-control" id="exampleInputPassword1" placeholder="Password" >
+				</div>
+				<br>
+				<div class="form-group">
+					<label s><b>Apodo:</b></label>
+					<input name="nick" type="text" required="required" class="form-control" >
+				</div>
+				<br>
+				<div class="form-group">
+					<label><b>Email:</b></label>
+					<input name="email" type="text" required="required" class="form-control"  >
+				</div>
+				<br>
+				<div class="row">
+					<div class="d-grid gap-2 mx-auto">
+						<button type="submit" class="btn btn-success">Guardar</button>
+						<a class="btn btn-primary btn-md" href="index.php" role="button">Volver</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 <script>
 	
 

@@ -7,6 +7,7 @@ include "conexion.php";
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src ="script.js"></script>
+<link href="css/estilos.css" rel="stylesheet" type="text/css">
 <meta charset="utf-8">
 <title>Menu Principal</title>
 	<?php 
@@ -14,84 +15,87 @@ include "conexion.php";
 ?>
 </head>
 
-<body>
-	<?php
-	if(isset($_GET["op"])){
-	if($_GET["op"]=="PROHIBIDO"){
-		?>
-	<div class="alert alert-danger" role="alert">
-		<h4>No tenes permisos</h4>
+<body class="background-claro">
+
+<div class="row header">
+		<div class="col-md-4">
+			<img src="img/logo.png" width="300">
+		</div>
+		<div class="col-md-5"></div>
+		<div class="col-md-2 autores"> Diseñado y desarrollado por: <b><i>Facundo Perez, Matias Dieguez, Juan Cruz Sanchez Saiag y Pilar Fernandez Mutti </i></b></div>
+</div>
+<div class="row">
+	
+	<div class="col-md-10"></div>
+	<div class="col-md-2">
+		<br>
+		<input type="button" name="enviar"  class="btn btn-dark" value="Ver Historial" href="javascript:;" onclick="mostrarRegistar('dado');">
+		<?php
+		if(isset($_GET["op"])){
+		if($_GET["op"]=="PROHIBIDO"){
+			?>
+		<div class="alert alert-danger" role="alert">
+			<h4>No tenes permisos</h4>
+		</div>
+		<?php }}
+	include "navegador.php";
+	?>
 	</div>
-	<?php }}
- include "navegador.php";
-?>
+</div>
+
 <div class="container">
 	
-	<div class="row">
+	<div class="row menu-principal">
 		<h1 class="text-center">Menu Principal</h1>
 		<h2 class="text-center">Bienvenido, <?php echo $_SESSION['usuario']; ?> </h2>
 	</div>
 	<br>
+
 	<div class="row">
-		<div class="col-md-2">
-			<br><br><br>
-			<button class="btn btn-success btn-block" id="create" onclick="tipoConsulta(id)">Crear Tabla</button>
-			
-			<button class="btn btn-success btn-xs" id="create-document-example" onclick="verEjemplo(id)"> Ver ejemplo </button>
-			<br> <br>
-			<button class="btn btn-primary btn-block" id="insert" onclick="tipoConsulta(id)">Insert</button>
-			
-			<button class="btn btn-primary btn-xs" id="insert-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
-			
-			<br> <br>
-			<button class="btn btn-warning btn-block" id="get" onclick="tipoConsulta(id)">General SELECT</button>
-			
-			<button class="btn btn-warning btn-xs" id="get-document-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
-			<br> <br>
-			<button class="btn btn-primary btn-block" id="update" onclick="tipoConsulta(id)">Update</button>
-			
-			<button class="btn btn-primary btn-xs" id="update-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
-			<br> <br>
-			<button class="btn btn-danger btn-block" id="delete" onclick="tipoConsulta(id)">Delete</button>
-			
-			<button class="btn btn-danger btn-xs" id="delete-example" onclick="verEjemplo(id)" > Ver ejemplo </button>
-			<br>
-			<br>
-			<button class="btn btn-danger btn-block" id="limpiar" onclick="tipoConsulta(id)">Limpiar Consulta</button>
-			
-			<br><br>
-			<input type="button" name="enviar" value="Ver Historial" href="javascript:;" onclick="mostrarRegistar('dado');">
-
-
-
-		</div>	
-		<div class="col-md-5">
-			<h3 class="text-center">Escriba aqui su consulta</h3>
-			
-
-
-			
-			<form action= "consulta.php" method="post">
-				<div id="ejemplo" style="background-color: aqua; border-radius: 20px;"> </div>
-
+		<div class="col-md-6">
+			<div class="row">
+				<h3 class="text-center">Escriba aqui su consulta</h3>
 				
-			</form>
-			<?php //<input type="text-area" id="nombre" style="height: 300px; width: 300px"> <br> 
-			?>
-			<textarea type="text-area" id="nombre" cols="50" rows="5" style="overflow:hidden;"></textarea>
+				<form action= "consulta.php" method="post">
+					<div id="ejemplo" style="background-color: aqua; border-radius: 20px;"> </div>
+					
+				</form>
+				<?php //<input type="text-area" id="nombre" style="height: 300px; width: 300px"> <br> 
+				?>
+				<textarea type="text-area" id="nombre" cols="89" rows="10" style="overflow:hidden;"></textarea>
+			</div>
+			<div class="row">
+				<button class="btn btn-danger btn-block col-3" id="limpiar" onclick="tipoConsulta(id)">Limpiar Consulta</button>
+				<input type="button" class="btn btn-dark btn-padding col-3" name="enviar" value="Enviar" href="javascript:;" onclick="Hola($('#nombre').val());">
+			</div>
 			<br>
-			<input type="button" name="enviar" value="Enviar" href="javascript:;" onclick="Hola($('#nombre').val());">
-			
-			
+			<div class="row botones">
+				<div class="btn-group d-flex">
+					<button class="btn btn-success boton" id="create" onclick="tipoConsulta(id)">Create</button>
+					<button class="btn btn-primary boton" id="insert" onclick="tipoConsulta(id)">Insert</button>
+					<button class="btn btn-success boton" id="get" onclick="tipoConsulta(id)">Select</button>
+					<button class="btn btn-primary boton" id="update" onclick="tipoConsulta(id)">Update</button>
+					<button class="btn btn-danger boton ultimo" id="delete" onclick="tipoConsulta(id)">Delete</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-5">
+			<div class="row text-center">
+				<h3>Respuesta</h3>
+			</div>
+			<div class="row" id="resultado">
+			</div>
 		</div>
 
-		<div class="col-md-5" id="resultado">
-
+	</div>
+	<br><br><br>
+	
+	<div class="row">
+		<div class="col-md-5" id="historial" style="width: 100%">
 		</div>
 	</div>
-	<div class="col-md-5" id="historial" style="width: 100%">
-	</div>
-
+</div>
 <?php
 	if (isset($_GET["fallo"]) && ($_GET["fallo"]) == 'insert')
 		$tipoConsulta = "insert";
@@ -145,41 +149,6 @@ include "conexion.php";
 		}
 	}
 
-	
-	function verEjemplo(id){
-		if (id =="create-document-example"){
-			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" + 
-    ' &nbsp CREATE TABLE IF NOT EXISTS jugadores ( <br>'+
-	' &nbsp id_jugador int(5) AUTO_INCREMENT, <br>'+
-	' &nbsp nombre varchar(30), <br>'+
-	' &nbsp apellido varchar(30), <br>'+
-	' &nbsp deporte varchar(30), <br>'+
-	' &nbsp numero int, <br>'+
-	' &nbsp PRIMARY KEY (id_jugador)) <br> <br>'  
-		}
-		else if(id =="get-document-example"){
-			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" + 
-    ' &nbsp SELECT * from jugadores <br><br>'
-		}
-		else if(id =="update-example"){
-			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" + 
-    ' &nbsp  UPDATE jugadores <br>'+
-    ' &nbsp  SET nombre=[value],<br>'+
-	' &nbsp	apellido=[value],<br>'+
-	' &nbsp	deporte=[value],<br>'+
-	' &nbsp	numero=[value]<br>'+
-	' &nbsp	WHERE 0'
-		}
-		else if(id =="insert-example"){
-			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" + 
-    ' &nbsp INSERT INTO jugadores (Nombre, Apellido, Deporte, Numero)<br>'+
-	' &nbsp VALUES ("Leonel", "Messi", "Futbol", 10)'
-		}
-		else if (id =="delete-example"){
-			document.getElementById("ejemplo").innerHTML = "<br> &nbsp&nbsp <b>Ejemplo:</b> <br>" +
-		'&nbspDELETE FROM jugadores WHERE 0'
-		}
-	}
 
 	function agregarCampo(){
 		
@@ -191,7 +160,6 @@ include "conexion.php";
 	}
 
 </script>
-
 </body>
 
 

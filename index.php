@@ -6,70 +6,77 @@
 	<?php 
  include "estilos.php";
 ?>
-<link href="estilos.css" rel="stylesheet" type="text/css">
+<link href="css/estilos.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body class="background">
+	<div class="row header">
+		<div class="col-md-4">
+			<img src="img/logo.png" width="300">
+		</div>
+		<div class="col-md-5"></div>
+		<div class="col-md-2 autores"> Diseñado y desarrollado por: <b><i>Facundo Perez, Matias Dieguez, Juan Cruz Sanchez Saiag y Pilar Fernandez Mutti </i></b></div>
+	</div>
 	<?php 
 	
-if(isset($_GET["op"])){
-	if($_GET["op"]=="PROHIBIDO"){
-		?>
-	<div class="alert alert-danger" role="alert">
-		<h4>No tenes permisos</h4>
-	</div>
-	<?php
-	} elseif ( $_GET[ "op" ] == "SALIR" ) {
+	if(isset($_GET["op"])){
+		if($_GET["op"]=="PROHIBIDO"){
 			?>
-	<div class="alert alert-danger" role="alert">
-		<h4>Saliste de sesion</h4>
-	</div>
-	<?php
-
-	} elseif ( $_GET[ "op" ] == "REGISTRADO" ) {
+		<div class="alert alert-danger" role="alert">
+			<h4>No tenes permisos</h4>
+		</div>
+		<?php
+		} elseif ( $_GET[ "op" ] == "SALIR" ) {
+				?>
+		<div class="alert alert-danger" role="alert">
+			<h4>Saliste de sesion</h4>
+		</div>
+		<?php
+	
+		} elseif ( $_GET[ "op" ] == "REGISTRADO" ) {
+				?>
+		<div class="alert alert-primary" role="alert">
+			<h4>Ya puede iniciar sesion</h4>
+		
+		</div>
+		<?php
+	
+		} else{
 			?>
-	<div class="alert alert-primary" role="alert">
-		<h4>Ya puede iniciar sesion</h4>
+		<div class="alert alert-danger" role="alert">
+			<h4>Error</h4>
+		
+		</div>
+		<?php
 	
-	</div>
-	<?php
-
-	} else{
+		}
+		}
 		?>
-	<div class="alert alert-danger" role="alert">
-		<h4>Error</h4>
-	
-	</div>
-	<?php
-
-	}
-	}
-	
-
-	?>
-	<div class="container">
-		<br>
-		<h2 class="text-center">Iniciar sesion</h2>
+	<div class="row top-padding-100">
 		<div class="col-md-4"></div>
-		<form  action="login.php" method="post" class="col-md-4">
-			
-		  <div class="form-group ">
-				<label for="exampleInputEmail1">Usuario:</label>
-				<input name="usuario" type="text" required="required" class="form-control" placeholder="Usuario">
-			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Contrase&ntilde;a</label>
-				<input name="password" type="password" required="required" class="form-control" placeholder="Password">
-			</div>		
-			<div class="row espacio" >
-					<button type="submit" class="btn btn-success">Iniciar</button>
-			</div>
+		<div class="col-md-4 white-back">
+			<br>
+			<h2 class="text-center">Iniciar sesion</h2>
+			<form  action="login.php" method="post">
 				
-		  </div>
-		</form>
-		<br>
-		<div class="col-md-6"></div> 
-		<a href="registrase.php"><button class="btn ">Registrarse</button> </a>
+			<div class="form-group ">
+					<label for="exampleInputEmail1"><b>Usuario:</b></label>
+					<input name="usuario" type="text" required="required" class="form-control" placeholder="Usuario">
+			</div><br>
+			<div class="form-group">
+					<label for="exampleInputPassword1"><b>Contrase&ntilde;a</b></label>
+					<input name="password" type="password" required="required" class="form-control" placeholder="Password">
+			</div><br><br>
+			<div class="row">
+				<div class="d-grid gap-2 mx-auto">
+					<button type="submit" class="btn btn-success btn-md">Iniciar</button>
+					<a class="btn btn-primary btn-md" href="registrase.php" role="button">Registrarse</a>
+				</div>
+			</div>
+					
+			</form>
+			
+		</div>
 	</div>
 	
 </body>

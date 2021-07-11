@@ -1,0 +1,99 @@
+
+.header {
+	background-color:white;
+	padding-left: 30px;
+	
+}
+
+.menu-principal{
+	color:black;
+}
+
+.autores {
+	padding-top:10px;
+}
+
+.white-back{
+	padding: 30px 50px 50px 50px;
+	background-color: rgba(255,255,255,1);
+	border: 5px solid gray;
+	border-radius:50px;
+	box-shadow: 10px 10px gray;
+}
+
+.top-padding-100{
+	padding-top: 100px;
+}
+.top-padding-50{
+	padding-top: 50px;
+}
+
+
+.background {
+	background-image: url("../img/cloud.jpg");
+	background-position: center; /* Center the image */
+  	background-repeat: no-repeat; /* Do not repeat the image */
+  	height: 800px;
+}
+.background-claro {
+	background-image: url("../img/cloud2.jpg");
+	background-position: center; /* Center the image */
+  	height: 800px;
+}
+
+.fondo1Form{
+background-color: #291EB8;
+border-bottom-right-radius: 30px;
+padding-bottom: 20px;
+border-bottom-left-radius: 30px;
+}
+
+.espacio{
+	margin-left: 20px;
+}
+
+
+.dtHorizontalExampleWrapper {
+max-width: 600px;
+margin: 0 auto;
+}
+#dtHorizontalExample th, td {
+white-space: nowrap;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
+.botones {
+	background-color: rgba(0,0,0,0.8); !important;
+	padding:20px;
+}
+
+.justify{
+	text-align:justify;
+}
+
+.boton {
+	margin-right:20px;
+}
+.ultimo{
+	margin-right:0px;
+}
+.btn-padding{
+	margin-left:330px;
+}
+#resultado{
+	background-color:white;
+}
+#historial{
+	background-color:white!important;
+}
