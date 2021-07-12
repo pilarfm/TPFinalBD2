@@ -29,7 +29,7 @@ include "conexion.php";
 	<div class="col-md-10"></div>
 	<div class="col-md-2">
 		<input type="button" name="enviar"  class="btn btn-dark" value="Ver Historial" href="javascript:;" onclick="mostrarRegistar('dado');">
-		<button class="btn btn-success" href="exportarPDF.php" target="_blank">Exportar Historial en PDF</button>
+		<a href="exportarPDF.php" target="_blank"><button class="btn btn-success"  >Exportar Historial en PDF</button></a>
 		<?php
 		if(isset($_GET["op"])){
 		if($_GET["op"]=="PROHIBIDO"){
@@ -75,6 +75,7 @@ include "conexion.php";
 					<button class="btn btn-primary boton" id="update" onclick="tipoConsulta(id)">Update</button>
 					<button class="btn btn-danger boton ultimo" id="delete" onclick="tipoConsulta(id)">Delete</button>
 				</div>
+			
 			</div>
 		</div>
 		<div class="col-md-1"></div>
@@ -119,31 +120,33 @@ include "conexion.php";
 ?>
 
 <script>
+
 	function tipoConsulta(id){
 		if (id=="create"){
-			document.getElementById("nombre").innerHTML = 
-			'CREATE TABLE IF NOT EXISTS jugadores ('+
+			$('#nombre').val('CREATE TABLE IF NOT EXISTS jugadores ('+
 			'id_jugador int(5) AUTO_INCREMENT,\n'+
 			'nombre varchar(30),\n'+
 			'apellido varchar(30),\n'+
 			'deporte varchar(30),\n'+
 			'numero int,\n'+
-			'PRIMARY KEY (id_jugador))';
+			'PRIMARY KEY (id_jugador))');
 		}
 		else if (id=="insert"){
-			document.getElementById("nombre").innerHTML = 'INSERT INTO jugadores (Nombre, Apellido, Deporte, Numero) VALUES ("Leonel", "Messi", "Futbol", 10)';
+
+			$('#nombre').val('INSERT INTO jugadores (Nombre, Apellido, Deporte, Numero) VALUES ("Leonel", "Messi", "Futbol", 10)');
 		}
 		else if (id=="get"){
-			document.getElementById("nombre").innerHTML = 'SELECT * FROM jugadores';
+			$('#nombre').val('SELECT * FROM jugadores');
 		}
 		else if (id=="update"){
-			document.getElementById("nombre").innerHTML = 'UPDATE jugadores SET nombre = [value], apellido = [value], deporte = [value], numero = [value] WHERE 0';
+			$('#nombre').val('UPDATE jugadores SET nombre = [value], apellido = [value], deporte = [value], numero = [value] WHERE 0');
 		}
 		else if (id=="delete"){
-			document.getElementById("nombre").innerHTML = 'DELETE FROM jugadores WHERE 0';
+			$('#nombre').val('DELETE FROM jugadores WHERE 0');
+
 		}
 		else if (id=="limpiar"){
-			document.getElementById("nombre").innerHTML = '';
+			$('#nombre').val('');
 		}
 	}
 
