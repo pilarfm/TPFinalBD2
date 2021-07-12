@@ -24,12 +24,12 @@ include "conexion.php";
 		<div class="col-md-5"></div>
 		<div class="col-md-2 autores"> Diseñado y desarrollado por: <b><i>Facundo Perez, Matias Dieguez, Juan Cruz Sanchez Saiag y Pilar Fernandez Mutti </i></b></div>
 </div>
+<br>
 <div class="row">
-	
 	<div class="col-md-10"></div>
 	<div class="col-md-2">
-		<br>
 		<input type="button" name="enviar"  class="btn btn-dark" value="Ver Historial" href="javascript:;" onclick="mostrarRegistar('dado');">
+		<button class="btn btn-success" href="exportarPDF.php" target="_blank">Exportar Historial en PDF</button>
 		<?php
 		if(isset($_GET["op"])){
 		if($_GET["op"]=="PROHIBIDO"){
@@ -46,8 +46,7 @@ include "conexion.php";
 <div class="container">
 	
 	<div class="row menu-principal">
-		<h1 class="text-center">Menu Principal</h1>
-		<h2 class="text-center">Bienvenido, <?php echo $_SESSION['usuario']; ?> </h2>
+		<h1 class="text-center"><b>Bienvenido, <?php echo $_SESSION['usuario']; ?> </b></h1>
 	</div>
 	<br>
 	<div class="row">
