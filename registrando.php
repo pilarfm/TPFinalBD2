@@ -11,7 +11,10 @@ if ( $email != null && $nick != null && $usuario != null && $password != null ) 
 	if ( @mysqli_num_rows( $res1 ) ) {
 		header( "location:registrase.php?op=EXISTE" );
 	} else {
-		$query =  " CREATE USER '" . $usuario . "'@'localhost' IDENTIFIED BY '" . $password ."'";
+		$query=  " CREATE USER '" . $usuario . "'@'localhost' IDENTIFIED BY '" . $password ."'
+		WITH MAX_QUERIES_PER_HOUR 150
+		MAX_CONNECTIONS_PER_HOUR 200
+		MAX_UPDATES_PER_HOUR 30";
 		
 		$crearUser = mysqli_query( $link,$query )or die( mysqli_error( $link ) ); // muestra el error
 		//crea el usuario de conexion a  localhost 

@@ -1,0 +1,2 @@
+https://hub.docker.com/r/tomsik68/xampp/
+docker run --name myXampad -p 41061:22 -p 41062:80 -t -v C:\xampp\htdocs\bd2\TPFinalBD2:/www tomsik68/xampp
