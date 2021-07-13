@@ -13,7 +13,6 @@ if ( $email != null && $nick != null && $usuario != null && $password != null ) 
 	} else {
 		$query=  " CREATE USER '" . $usuario . "'@'localhost' IDENTIFIED BY '" . $password ."'
 		WITH MAX_QUERIES_PER_HOUR 150
-		MAX_USER_CONNECTIONS 3
 		MAX_CONNECTIONS_PER_HOUR 200
 		MAX_UPDATES_PER_HOUR 30";
 		
